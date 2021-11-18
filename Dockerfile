@@ -3,7 +3,7 @@ FROM registry.access.redhat.com/ubi8/ubi:8.5
 RUN dnf -y install nginx && \
     dnf clean all
 
-COPY index.html /usr/share/nginx/html/
+COPY index.html hawtconfig.json /usr/share/nginx/html/
 COPY dist/ /usr/share/nginx/html/dist/
 COPY node_modules/ /usr/share/nginx/html/node_modules/
 

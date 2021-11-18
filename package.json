@@ -11,7 +11,9 @@
     "start": "gulp",
     "build": "gulp build",
     "prepack": "gulp version",
-    "test": "gulp build"
+    "test": "gulp build",
+    "image": "podman build . -t quay.io/tasato/hawtio-kubernetes-api:latest",
+    "image-run": "podman run -d --rm -p 2772:80 --name hawtio quay.io/tasato/hawtio-kubernetes-api:latest"
   },
   "dependencies": {
     "@hawtio/core": "^4.15.0",

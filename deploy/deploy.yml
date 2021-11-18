@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: test
+  name: hawtio-kubernetes-api
+  labels:
+    app: hawtio-kubernetes-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hawtio-kubernetes-api
+  template:
+    metadata:
+      labels:
+        app: hawtio-kubernetes-api
+    spec:
+      containers:
+        - name: hawtio-kubernetes-api
+          image: quay.io/tasato/hawtio-kubernetes-api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "0.2"
+              memory: 32Mi
+            limits:
+              cpu: "1.0"
+              memory: 32Mi
+          volumeMounts:
+            - name: hawtio-openshift-config
+              mountPath: /usr/share/nginx/html/osconsole
+      volumes:
+        - name: hawtio-openshift-config
+          secret:
+            secretName: hawtio-openshift-config

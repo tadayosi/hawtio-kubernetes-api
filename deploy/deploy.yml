@@ -1,19 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: test
   name: hawtio-kubernetes-api
   labels:
-    app: hawtio-kubernetes-api
+    app: hawtio-online
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hawtio-kubernetes-api
+      app: hawtio-online
   template:
     metadata:
       labels:
-        app: hawtio-kubernetes-api
+        app: hawtio-online
     spec:
       containers:
         - name: hawtio-kubernetes-api
